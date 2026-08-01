@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.29/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.29",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "Koskila",
+    "websiteUrl": "https://koskila.net",
+    "privacyUrl": "https://koskila.net/privacy-policy/",
+    "termsOfUseUrl": "https://koskila.net"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Internal Support",
+    "full": "Internal Support Ticket Assistant"
+  },
+  "description": {
+    "short": "Find and summarize internal support tickets in Copilot.",
+    "full": "Searches the Internal Support Tickets Microsoft Graph connector to find, summarize, and compare support tickets by customer, status, priority, engineer, owner, and date."
+  },
+  "accentColor": "#117865",
+  "supportsChannelFeatures": "tier1",
+  "composeExtensions": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "copilotAgents": {        
+    "declarativeAgents": [
+      {
+        "id": "internalSupportAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "validDomains": []
+}

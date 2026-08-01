@@ -1,0 +1,39 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.3",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "[${title}](${link})",
+      "color": "Accent",
+      "size": "Medium",
+      "weight": "Bolder",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${customer} | ${status} | ${priority}",
+      "spacing": "Small",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${description}",
+      "wrap": true,
+      "maxLines": 3,
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Assigned to **${assignedEngineer}** (${assignedEngineerEmail}) | Due {{DATE(${dueDateTime},SHORT)}}",
+      "spacing": "Small",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "${accountOwner} ${accountOwnerEmail} ${createdDateTime} ${updatedDateTime} ${resolvedDateTime}",
+      "isVisible": false
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+}

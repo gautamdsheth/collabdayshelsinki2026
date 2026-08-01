@@ -1,0 +1,43 @@
+{
+  "name": "internalsupportconnector",
+  "version": "1.0.0",
+  "description": "## Build a basic declarative copilot",
+  "engines": {
+    "node": "22.x"
+  },
+  "module": "esnext",
+  "main": "dist/src/functions/*.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "npm run clean && npm run build",
+    "start": "func start",
+    "test": "npm run build && node --test test/*.test.js",
+    "storage": "\"%NVM_HOME%\\v24.12.0\\node.exe\" ./node_modules/azurite/dist/src/azurite.js --location ./_storage_emulator --debug ./_storage_emulator/debug.log",
+    "prettier:check": "prettier --check \"./src/**/*.{ts,json}\"",
+    "prettier:write": "prettier --write \"./src/**/*.{ts,json}\"",
+    "notify:admin-consent": "node ./scripts/admin-consent.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/functions": "^4.5.0",
+    "@azure/identity": "^4.13.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "dotenv": "^16.4.5",
+    "gray-matter": "^4.0.3",
+    "remove-markdown": "^0.5.2",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@microsoft/microsoft-graph-client": "^3.0.6",
+    "@microsoft/microsoft-graph-types": "^2.40.0",
+    "@types/node": "^22.0.0",
+    "azurite": "^3.36.0",
+    "minimist": "^1.2.8",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "5.2.2"
+  }
+}

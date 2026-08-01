@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json",
+  "version": "v1.7",
+  "name": "Internal Support Escalation",
+  "description": "Assesses internal support tickets and coordinates confirmed escalations through Outlook mail, Teams meetings, and channel messages.",
+  "instructions": "$[file('instruction.txt')]",
+  "capabilities": [
+    {
+      "name": "GraphConnectors",
+      "connections": [
+        {
+          "connection_id": "InternalSupportTickets"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "workIqUser",
+      "file": "ai-plugin-user.json"
+    },
+    {
+      "id": "workIqMail",
+      "file": "ai-plugin-mail.json"
+    },
+    {
+      "id": "workIqCalendar",
+      "file": "ai-plugin-calendar.json"
+    },
+    {
+      "id": "workIqTeams",
+      "file": "ai-plugin-teams.json"
+    }
+  ],
+  "conversation_starters": [
+    {
+      "title": "Assess urgent tickets",
+      "text": "Assess the open critical and high-priority tickets and recommend which ones need escalation."
+    },
+    {
+      "title": "Escalate a ticket",
+      "text": "Assess ticket TKT-2026-001 and prepare an escalation plan."
+    },
+    {
+      "title": "Review SLA risk",
+      "text": "Find unresolved tickets at risk of missing their due date and explain why."
+    },
+    {
+      "title": "Check recent escalation",
+      "text": "Check whether ticket TKT-2026-001 was already escalated in the last 24 hours."
+    }
+  ]
+}

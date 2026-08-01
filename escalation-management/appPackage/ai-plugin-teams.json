@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
+  "schema_version": "v2.4",
+  "name_for_human": "Work IQ Teams",
+  "description_for_human": "Post confirmed escalation messages to the designated Teams channel.",
+  "contact_email": "gautam@koskila.onmicrosoft.com",
+  "namespace": "workiq-teams",
+  "functions": [],
+  "runtimes": [
+    {
+      "type": "RemoteMCPServer",
+      "spec": {
+        "url": "https://agent365.svc.cloud.microsoft/agents/tenants/2ca837a1-61a6-4011-a2d1-80d50b2494cf/servers/mcp_TeamsServer"
+      },
+      "run_for_functions": ["*"],
+      "auth": {
+        "type": "OAuthPluginVault",
+        "reference_id": "${{MCP_DA_AUTH_ID}}"
+      }
+    }
+  ]
+}

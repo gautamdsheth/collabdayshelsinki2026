@@ -1,0 +1,17 @@
+{
+	"IsEncrypted": false,
+	"Values": {
+		"FUNCTIONS_WORKER_RUNTIME": "node",
+		"AzureWebJobsStorage": "UseDevelopmentStorage=true",
+		"AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
+		"TEAMSFX_ENV": "local",
+		"AZURE_TOKEN_CREDENTIALS": "dev",
+		"AZURE_CLIENT_ID": "<entra-app-registration-client-id>",
+		"AZURE_CLIENT_SECRET": "<entra-app-registration-client-secret>",
+		"AZURE_TENANT_ID": "<your-entra-tenant-id>",
+		"CONNECTOR_ID": "InternalSupportTickets",
+		"CONNECTOR_NAME": "Internal Support Tickets",
+		"CONNECTOR_DESCRIPTION": "Connection that indexes internal support tickets for Microsoft 365 Copilot.",
+		"CONNECTOR_DATA_PATH": "tickets.json"
+	}
+}

@@ -1,0 +1,105 @@
+[
+  {
+    "name": "title",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "labels": ["title"]
+  },
+  {
+    "name": "link",
+    "type": "String",
+    "isQueryable": true,
+    "isRetrievable": true,
+    "labels": ["url"]
+  },
+  {
+    "name": "description",
+    "type": "String",
+    "isSearchable": true,
+    "isRetrievable": true
+  },
+  {
+    "name": "customer",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "status",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "priority",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "assignedEngineer",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "assignedEngineerEmail",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "accountOwner",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "accountOwnerEmail",
+    "type": "String",
+    "isQueryable": true,
+    "isSearchable": true,
+    "isRetrievable": true,
+    "isRefinable": true
+  },
+  {
+    "name": "createdDateTime",
+    "type": "DateTime",
+    "isQueryable": true,
+    "isRetrievable": true,
+    "labels": ["createdDateTime"]
+  },
+  {
+    "name": "updatedDateTime",
+    "type": "DateTime",
+    "isQueryable": true,
+    "isRetrievable": true,
+    "labels": ["lastModifiedDateTime"]
+  },
+  {
+    "name": "dueDateTime",
+    "type": "DateTime",
+    "isQueryable": true,
+    "isRetrievable": true
+  },
+  {
+    "name": "resolvedDateTime",
+    "type": "DateTime",
+    "isQueryable": true,
+    "isRetrievable": true
+  }
+]

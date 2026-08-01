@@ -1,0 +1,77 @@
+# =====================================================================
+# Secrets & local-only config — NEVER commit these
+# =====================================================================
+# Microsoft 365 Agents Toolkit / TeamsFx user env files (hold client secrets)
+**/env/.env.*.user
+# TeamsFx generated env files (hold tenant / app / object IDs)
+**/env/.env.dev
+**/env/.env.local
+**/env/.env.test
+**/.localConfigs
+
+# Azure Functions local settings (holds AZURE_CLIENT_SECRET)
+**/local.settings.json
+
+# Generic dotenv
+.env
+.env.*
+!.env.*.sample
+!**/env/.env.*.sample
+
+# Certificates / keys
+*.pem
+*.pfx
+*.p12
+*.key
+*.cer
+*.crt
+
+# =====================================================================
+# Dependencies
+# =====================================================================
+node_modules/
+.pnp
+.pnp.js
+
+# =====================================================================
+# Build output
+# =====================================================================
+dist/
+build/
+out/
+**/appPackage/build/
+bin/
+obj/
+
+# =====================================================================
+# Azure Functions / Azurite emulator artifacts
+# =====================================================================
+_storage_emulator/
+__blobstorage__/
+__queuestorage__/
+__azurite_db*__.json
+
+# =====================================================================
+# Runtime state / temp
+# =====================================================================
+tmp/
+temp/
+*.log
+npm-debug.log*
+yarn-error.log*
+.deployment
+
+# =====================================================================
+# Editor / OS
+# =====================================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+
+# =====================================================================
+# Repo root housekeeping
+# =====================================================================
+# stray empty lockfile from an accidental `npm install` at the repo root
+/package-lock.json

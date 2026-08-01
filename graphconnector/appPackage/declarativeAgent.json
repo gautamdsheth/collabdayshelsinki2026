@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.7/schema.json",
+  "version": "v1.7",
+  "name": "Internal Support",
+  "description": "Finds and summarizes internal support tickets indexed by the Internal Support Tickets Microsoft Graph connector.",
+  "instructions": "$[file('instruction.txt')]",
+  "capabilities": [
+    {
+      "name": "GraphConnectors",
+      "connections": [
+        {
+          "connection_id": "InternalSupportTickets"
+        }
+      ]
+    }
+  ],
+  "conversation_starters": [
+    {
+      "title": "Critical tickets",
+      "text": "Show me the critical support tickets and summarize their current status."
+    },
+    {
+      "title": "Tickets by customer",
+      "text": "Which open tickets belong to Northwind Operations?"
+    },
+    {
+      "title": "Engineer workload",
+      "text": "Summarize the active tickets assigned to each engineer."
+    },
+    {
+      "title": "Upcoming deadlines",
+      "text": "Which unresolved support tickets are due soon?"
+    },
+    {
+      "title": "Find a ticket",
+      "text": "Find ticket TKT-2026-001 and give me its details."
+    }
+  ]
+}

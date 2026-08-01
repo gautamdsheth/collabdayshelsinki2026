@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.29/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.29",
+  "version": "1.0.3",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "Koskila",
+    "websiteUrl": "https://koskila.net",
+    "privacyUrl": "https://koskila.net/privacy-policy/",
+    "termsOfUseUrl": "https://koskila.net"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Support Escalation",
+    "full": "Internal Support Escalation Manager"
+  },
+  "description": {
+    "short": "Assess support tickets and prepare safe escalations.",
+    "full": "Assesses indexed internal support tickets, sends confirmed escalation email, schedules Teams meetings, and posts escalation messages to Teams channels."
+  },
+  "accentColor": "#117865",
+  "supportsChannelFeatures": "tier1",
+  "composeExtensions": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "internalSupportEscalationAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "validDomains": []
+}
