@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.29/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.29",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "Koskila",
+    "websiteUrl": "https://koskila.net",
+    "privacyUrl": "https://koskila.net/privacy-policy/",
+    "termsOfUseUrl": "https://koskila.net"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Support Closure",
+    "full": "Internal Support Closure Manager"
+  },
+  "description": {
+    "short": "Verify resolved tickets and close their GitHub issues.",
+    "full": "Checks indexed internal support tickets against the GitHub issues that back them, records resolution notes, and closes issues for tickets that are genuinely resolved after explicit confirmation."
+  },
+  "accentColor": "#8A3FFC",
+  "supportsChannelFeatures": "tier1",
+  "composeExtensions": [],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "internalSupportClosureAgent",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "validDomains": []
+}

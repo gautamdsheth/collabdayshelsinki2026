@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Internal Support Tickets on GitHub
+  description: >-
+    Minimal subset of the GitHub REST API used to read, comment on, and close
+    the issues that back the InternalSupportTickets Graph connector records.
+    The repository is fixed to whitewater-magpie/M365AgentsSDKGitHubBot, so the
+    agent only has to derive the issue number.
+  version: 1.1.0
+servers:
+  - url: https://api.github.com
+    description: GitHub REST API
+paths:
+  /repos/whitewater-magpie/M365AgentsSDKGitHubBot/issues/{issue_number}:
+    get:
+      operationId: getIssue
+      summary: Get a support ticket issue
+      description: >-
+        Returns the current state, title, body, labels, and assignee of a single
+        support ticket issue.
+      # Read-only: Copilot may call this without prompting once the plugin is allowed.
+      x-openai-isConsequential: false
+      parameters:
+        - $ref: "#/components/parameters/IssueNumber"
+      responses:
+        "200":
+          description: The issue was found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Issue"
+        "404":
+          description: The issue does not exist or is not visible to the signed-in user.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      operationId: updateIssue
+      summary: Close or reopen a support ticket issue
+      description: >-
+        Updates the state of a support ticket issue. Use state closed with
+        state_reason completed when the underlying support ticket is resolved,
+        or state_reason not_planned when the ticket is dismissed without a fix.
+      # Changes state in GitHub: always prompt for confirmation, never "always allow".
+      x-openai-isConsequential: true
+      parameters:
+        - $ref: "#/components/parameters/IssueNumber"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: string
+                  description: The new state of the issue.
+                  enum:
+                    - closed
+                    - open
+                state_reason:
+                  type: string
+                  description: >-
+                    Why the issue is being closed. Use completed when the work is
+                    done and not_planned when it will not be fixed.
+                  enum:
+                    - completed
+                    - not_planned
+                    - reopened
+              required:
+                - state
+      responses:
+        "200":
+          description: The issue was updated.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Issue"
+        "403":
+          description: The signed-in user cannot write to this repository.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: The issue does not exist or is not visible to the signed-in user.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /repos/whitewater-magpie/M365AgentsSDKGitHubBot/issues/{issue_number}/comments:
+    post:
+      operationId: addIssueComment
+      summary: Add a closing note to a support ticket issue
+      description: >-
+        Posts a comment on a support ticket issue. Used to record the resolution
+        summary on the ticket before it is closed.
+      # Writes to GitHub: always prompt for confirmation.
+      x-openai-isConsequential: true
+      parameters:
+        - $ref: "#/components/parameters/IssueNumber"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                  description: The comment text in GitHub flavored markdown.
+              required:
+                - body
+      responses:
+        "201":
+          description: The comment was created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "403":
+          description: The signed-in user cannot comment on this repository.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: The issue does not exist or is not visible to the signed-in user.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  parameters:
+    IssueNumber:
+      name: issue_number
+      in: path
+      required: true
+      description: >-
+        The issue number, taken from the trailing segment of the ticket's link
+        property. For example a link ending in /issues/16 means 16. This is not
+        the ticket ID.
+      schema:
+        type: integer
+  schemas:
+    Issue:
+      type: object
+      properties:
+        number:
+          type: integer
+          description: The issue number.
+        title:
+          type: string
+          description: The issue title, which mirrors the support ticket title.
+        body:
+          type: string
+          description: The issue body containing the ticket detail table.
+        state:
+          type: string
+          description: Whether the issue is open or closed.
+        state_reason:
+          type: string
+          description: Why the issue was closed.
+        html_url:
+          type: string
+          description: Browser URL of the issue.
+        updated_at:
+          type: string
+          description: When the issue was last updated.
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The comment identifier.
+        body:
+          type: string
+          description: The comment text.
+        html_url:
+          type: string
+          description: Browser URL of the comment.
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message returned by GitHub.
+        documentation_url:
+          type: string
+          description: Link to the relevant GitHub API documentation.

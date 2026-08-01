@@ -1,0 +1,179 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
+  "schema_version": "v2.4",
+  "name_for_human": "GitHub Support Tickets",
+  "description_for_human": "Read, comment on, and close the GitHub issues that back internal support tickets.",
+  "description_for_model": "Reads, comments on, and closes GitHub issues that back internal support tickets. Use this after confirming with the user that a ticket is genuinely resolved.",
+  "contact_email": "gautam@koskila.onmicrosoft.com",
+  "namespace": "githubsupporttickets",
+  "functions": [
+    {
+      "name": "getIssue",
+      "description": "Get the current state, title, and body of the GitHub issue backing a support ticket.",
+      "capabilities": {
+        "confirmation": {
+          "type": "None"
+        },
+        "security_info": {
+          "data_handling": ["GetPrivateData"]
+        },
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.state",
+            "url": "$.html_url"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "#${number} · ${title}",
+                "weight": "Bolder",
+                "size": "Medium",
+                "wrap": true
+              },
+              {
+                "type": "FactSet",
+                "facts": [
+                  { "title": "State", "value": "${state}" },
+                  { "title": "Last updated", "value": "${updated_at}" }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "View on GitHub",
+                "url": "${html_url}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "addIssueComment",
+      "description": "Post a resolution summary as a comment on the GitHub issue backing a support ticket.",
+      "capabilities": {
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Post resolution note to GitHub",
+          "body": "This posts a public comment on the GitHub issue backing this ticket. Review the comment text below before allowing."
+        },
+        "security_info": {
+          "data_handling": ["ResourceStateUpdate"]
+        },
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.body",
+            "url": "$.html_url"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "Resolution note posted",
+                "weight": "Bolder",
+                "size": "Medium",
+                "wrap": true
+              },
+              {
+                "type": "TextBlock",
+                "text": "${body}",
+                "wrap": true,
+                "spacing": "Small"
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "View comment",
+                "url": "${html_url}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "updateIssue",
+      "description": "Close or reopen the GitHub issue backing a support ticket.",
+      "capabilities": {
+        "confirmation": {
+          "type": "AdaptiveCard",
+          "title": "Change GitHub issue state",
+          "body": "This changes the state of the GitHub issue backing this ticket. Check the issue number and the state reason below before allowing."
+        },
+        "security_info": {
+          "data_handling": ["ResourceStateUpdate"]
+        },
+        "response_semantics": {
+          "data_path": "$",
+          "properties": {
+            "title": "$.title",
+            "subtitle": "$.state",
+            "url": "$.html_url"
+          },
+          "static_template": {
+            "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+            "type": "AdaptiveCard",
+            "version": "1.5",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "Issue #${number} is now ${state}",
+                "weight": "Bolder",
+                "size": "Medium",
+                "wrap": true
+              },
+              {
+                "type": "TextBlock",
+                "text": "${title}",
+                "wrap": true,
+                "isSubtle": true,
+                "spacing": "None"
+              },
+              {
+                "type": "FactSet",
+                "facts": [
+                  { "title": "State", "value": "${state}" },
+                  { "title": "Reason", "value": "${state_reason}" },
+                  { "title": "Updated", "value": "${updated_at}" }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "Action.OpenUrl",
+                "title": "View on GitHub",
+                "url": "${html_url}"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "spec": {
+        "url": "apiSpecificationFile/github-issues.yaml",
+        "progress_style": "ShowUsageWithInputAndOutput"
+      },
+      "run_for_functions": ["getIssue", "updateIssue", "addIssueComment"],
+      "auth": {
+        "type": "OAuthPluginVault",
+        "reference_id": "${{GITHUB_AUTH_ID}}"
+      }
+    }
+  ]
+}

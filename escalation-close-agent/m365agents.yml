@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://aka.ms/m365-agents-toolkits/v1.12/yaml.schema.json
+version: v1.12
+
+environmentFolderPath: ./env
+
+provision:
+  - uses: teamsApp/create
+    with:
+      name: Internal Support Closure${{APP_NAME_SUFFIX}}
+    writeToEnvironmentFile:
+      teamsAppId: TEAMS_APP_ID
+
+  # Registers the GitHub App's user-to-server OAuth flow in the Teams OAuth
+  # vault. The resulting configuration id is referenced by
+  # ai-plugin-github.json as GITHUB_AUTH_ID.
+  #
+  # This uses the GitHub App's Client ID (Iv23...) and a generated client
+  # secret - NOT the App ID, installation ID, or private key. The private key
+  # path is server-to-server and would require a backend to sign a JWT, which
+  # this demo deliberately avoids.
+  #
+  # GitHub ignores the scope parameter for GitHub Apps; effective permissions
+  # come from the App's configured permissions, which must include
+  # Issues: Read and write. refreshUrl is registered because GitHub Apps
+  # expire user tokens after 8 hours unless that setting is disabled.
+  - uses: oauth/register
+    with:
+      name: GitHub Support Tickets
+      appId: ${{TEAMS_APP_ID}}
+      flow: authorizationCode
+      identityProvider: Custom
+      baseUrl: https://api.github.com/
+      authorizationUrl: https://github.com/login/oauth/authorize
+      tokenUrl: https://github.com/login/oauth/access_token
+      refreshUrl: https://github.com/login/oauth/access_token
+      clientId: ${{GITHUB_CLIENT_ID}}
+      clientSecret: ${{SECRET_GITHUB_CLIENT_SECRET}}
+    writeToEnvironmentFile:
+      configurationId: GITHUB_AUTH_ID
+
+  - uses: teamsApp/zipAppPackage
+    with:
+      manifestPath: ./appPackage/manifest.json
+      outputZipPath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+      outputFolder: ./appPackage/build
+
+  - uses: teamsApp/validateAppPackage
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: teamsApp/update
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+
+  - uses: copilotAgent/publish
+    with:
+      appPackagePath: ./appPackage/build/appPackage.${{TEAMSFX_ENV}}.zip
+    writeToEnvironmentFile:
+      titleId: M365_TITLE_ID
+      appId: M365_APP_ID

@@ -1,0 +1,7 @@
+env/.env.*.user
+appPackage/build/
+
+# Local credential scratch files — never commit
+gh.txt
+*.pem
+*.key
