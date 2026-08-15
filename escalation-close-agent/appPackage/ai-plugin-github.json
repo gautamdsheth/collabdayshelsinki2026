@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
   "schema_version": "v2.4",
-  "name_for_human": "GitHub Support Tickets",
+  "name_for_human": "GitHub Tickets",
   "description_for_human": "Read, comment on, and close the GitHub issues that back internal support tickets.",
   "description_for_model": "Reads, comments on, and closes GitHub issues that back internal support tickets. Use this after confirming with the user that a ticket is genuinely resolved.",
   "contact_email": "gautam@koskila.onmicrosoft.com",
@@ -11,9 +11,6 @@
       "name": "getIssue",
       "description": "Get the current state, title, and body of the GitHub issue backing a support ticket.",
       "capabilities": {
-        "confirmation": {
-          "type": "None"
-        },
         "security_info": {
           "data_handling": ["GetPrivateData"]
         },
