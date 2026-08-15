@@ -2,7 +2,7 @@
   {
     "id": "TKT-2026-001",
     "title": "VPN connection fails after Windows security update",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/12",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/1",
     "description": "Users in the Helsinki office receive error 812 when connecting to the corporate VPN after installing the July Windows security update.",
     "customer": "Northwind Operations",
     "status": "In Progress",
@@ -21,7 +21,7 @@
   {
     "id": "TKT-2026-002",
     "title": "New finance user missing ERP permissions",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/13",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/2",
     "description": "A recently onboarded financial analyst can sign in to the ERP system but cannot access accounts payable or month-end reporting modules.",
     "customer": "Contoso Finance",
     "status": "Open",
@@ -40,7 +40,7 @@
   {
     "id": "TKT-2026-003",
     "title": "SharePoint project site returns access denied",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/14",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/3",
     "description": "Members of the Aurora project team lost access to their SharePoint site even though the Microsoft 365 group still lists them as members.",
     "customer": "Fabrikam Engineering",
     "status": "Pending Customer",
@@ -59,7 +59,7 @@
   {
     "id": "TKT-2026-004",
     "title": "Warehouse barcode scanners intermittently disconnect",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/15",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/4",
     "description": "Handheld barcode scanners on warehouse floor two disconnect from Wi-Fi several times per hour and require a manual reconnect.",
     "customer": "Adventure Works Logistics",
     "status": "In Progress",
@@ -78,7 +78,7 @@
   {
     "id": "TKT-2026-005",
     "title": "Power BI sales dashboard shows stale data",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/16",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/5",
     "description": "The executive sales dashboard has not refreshed since Friday, while the underlying data warehouse contains current transactions.",
     "customer": "Tailspin Toys",
     "status": "Resolved",
@@ -97,7 +97,7 @@
   {
     "id": "TKT-2026-006",
     "title": "Shared mailbox messages remain in outbox",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/17",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/6",
     "description": "Messages sent from the customer-service shared mailbox remain in Outlook's outbox for multiple agents, while personal mail sends normally.",
     "customer": "Litware Retail",
     "status": "Open",
@@ -116,7 +116,7 @@
   {
     "id": "TKT-2026-007",
     "title": "Mobile device enrollment blocked by compliance policy",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/18",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/7",
     "description": "Company-owned Android devices fail during Intune enrollment because the compliance policy is evaluated before the required security app is installed.",
     "customer": "Proseware Services",
     "status": "In Progress",
@@ -135,7 +135,7 @@
   {
     "id": "TKT-2026-008",
     "title": "Guest users cannot join Teams meeting chat",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/19",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/8",
     "description": "External consultants can join scheduled Teams meetings but cannot view or post messages in the associated meeting chat.",
     "customer": "Wide World Importers",
     "status": "Pending Customer",
@@ -154,7 +154,7 @@
   {
     "id": "TKT-2026-009",
     "title": "Production API latency exceeds SLA",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/20",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/9",
     "description": "The order-processing API p95 response time increased from 350 ms to 2.8 seconds during normal business hours without a corresponding traffic spike.",
     "customer": "Alpine Ski House",
     "status": "In Progress",
@@ -173,7 +173,7 @@
   {
     "id": "TKT-2026-010",
     "title": "Certificate expiration warning for payroll integration",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/21",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/10",
     "description": "Monitoring reports that the client certificate used by the payroll-to-banking integration will expire within ten days.",
     "customer": "Contoso Finance",
     "status": "Open",
@@ -192,7 +192,7 @@
   {
     "id": "TKT-2026-011",
     "title": "Meeting room display does not show reservations",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/22",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/11",
     "description": "The lobby meeting room panel remains on the welcome screen and no longer displays Exchange room reservations or availability.",
     "customer": "Northwind Operations",
     "status": "Closed",
@@ -211,7 +211,7 @@
   {
     "id": "TKT-2026-012",
     "title": "Automated invoice emails classified as spam",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/23",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/12",
     "description": "Outbound invoice messages from the billing platform are increasingly delivered to recipients' junk folders despite valid SPF and DKIM records.",
     "customer": "Fabrikam Engineering",
     "status": "In Progress",
@@ -230,7 +230,7 @@
   {
     "id": "TKT-2026-013",
     "title": "CRM duplicate contacts created during synchronization",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/24",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/13",
     "description": "The nightly marketing synchronization creates duplicate CRM contact records when an existing contact has a secondary email address.",
     "customer": "Tailspin Toys",
     "status": "Pending Vendor",
@@ -249,7 +249,7 @@
   {
     "id": "TKT-2026-014",
     "title": "File server storage threshold exceeded",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/25",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/14",
     "description": "The design file share reached 94 percent capacity, preventing some users from saving large CAD exports and temporary render files.",
     "customer": "Adventure Works Logistics",
     "status": "Resolved",
@@ -268,7 +268,7 @@
   {
     "id": "TKT-2026-015",
     "title": "SSO redirects users to incorrect tenant",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/26",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/15",
     "description": "Employees with accounts in multiple Microsoft Entra tenants are redirected to a partner tenant when signing in to the internal learning portal.",
     "customer": "Proseware Services",
     "status": "Open",
@@ -287,7 +287,7 @@
   {
     "id": "TKT-2026-016",
     "title": "Teams call queue drops calls after transfer",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/27",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/16",
     "description": "Calls transferred from the main service queue to the returns team disconnect before an available agent can answer.",
     "customer": "Litware Retail",
     "status": "In Progress",
@@ -306,7 +306,7 @@
   {
     "id": "TKT-2026-017",
     "title": "macOS security agent consumes excessive CPU",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/28",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/17",
     "description": "Several developers report sustained CPU usage above 70 percent from the endpoint security agent after upgrading to the latest macOS release.",
     "customer": "Alpine Ski House",
     "status": "Pending Vendor",
@@ -325,7 +325,7 @@
   {
     "id": "TKT-2026-018",
     "title": "Purchase order approval flow skips regional manager",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/29",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/18",
     "description": "Power Automate routes purchase orders above EUR 25,000 directly to finance and omits the required regional manager approval step.",
     "customer": "Wide World Importers",
     "status": "Resolved",
@@ -344,7 +344,7 @@
   {
     "id": "TKT-2026-019",
     "title": "Azure backup job fails for reporting database",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/30",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/19",
     "description": "The scheduled backup for the production reporting database fails during validation with a storage authorization error.",
     "customer": "Fabrikam Engineering",
     "status": "In Progress",
@@ -363,7 +363,7 @@
   {
     "id": "TKT-2026-020",
     "title": "Printer deployment missing from new laptops",
-    "link": "https://github.com/whitewater-magpie/M365AgentsSDKGitHubBot/issues/31",
+    "link": "https://github.com/gautamdsheth/collabdayshelsinki2026/issues/20",
     "description": "Newly provisioned sales laptops do not receive the standard office printer mappings from Intune, although other device policies apply successfully.",
     "customer": "Northwind Operations",
     "status": "Closed",

@@ -4,14 +4,14 @@ info:
   description: >-
     Minimal subset of the GitHub REST API used to read, comment on, and close
     the issues that back the InternalSupportTickets Graph connector records.
-    The repository is fixed to whitewater-magpie/M365AgentsSDKGitHubBot, so the
+    The repository is fixed to gautamdsheth/collabdayshelsinki2026, so the
     agent only has to derive the issue number.
   version: 1.1.0
 servers:
   - url: https://api.github.com
     description: GitHub REST API
 paths:
-  /repos/whitewater-magpie/M365AgentsSDKGitHubBot/issues/{issue_number}:
+  /repos/gautamdsheth/collabdayshelsinki2026/issues/{issue_number}:
     get:
       operationId: getIssue
       summary: Get a support ticket issue
@@ -89,7 +89,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /repos/whitewater-magpie/M365AgentsSDKGitHubBot/issues/{issue_number}/comments:
+  /repos/gautamdsheth/collabdayshelsinki2026/issues/{issue_number}/comments:
     post:
       operationId: addIssueComment
       summary: Add a closing note to a support ticket issue

@@ -38,6 +38,22 @@ provision:
     writeToEnvironmentFile:
       configurationId: GITHUB_AUTH_ID
 
+  # oauth/register is a no-op once GITHUB_AUTH_ID exists, so it will not pick up
+  # a changed client id or secret. This step always refreshes the credentials on
+  # the existing registration, which is what makes rotating the GitHub App work
+  # without Copilot having to re-read the plugin manifest.
+  - uses: oauth/update
+    with:
+      name: GitHub Support Tickets
+      configurationId: ${{GITHUB_AUTH_ID}}
+      appId: ${{TEAMS_APP_ID}}
+      baseUrl: https://api.github.com/
+      authorizationUrl: https://github.com/login/oauth/authorize
+      tokenUrl: https://github.com/login/oauth/access_token
+      refreshUrl: https://github.com/login/oauth/access_token
+      clientId: ${{GITHUB_CLIENT_ID}}
+      clientSecret: ${{SECRET_GITHUB_CLIENT_SECRET}}
+
   - uses: teamsApp/zipAppPackage
     with:
       manifestPath: ./appPackage/manifest.json

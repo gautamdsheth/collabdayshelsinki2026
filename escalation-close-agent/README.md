@@ -36,7 +36,7 @@ GitHub ignores the OAuth `scope` parameter for GitHub Apps — effective access 
 
 | Function | Call | Purpose |
 | --- | --- | --- |
-| `getIssue` | `GET /repos/whitewater-magpie/M365AgentsSDKGitHubBot/issues/{issue_number}` | Read current issue state |
+| `getIssue` | `GET /repos/gautamdsheth/collabdayshelsinki2026/issues/{issue_number}` | Read current issue state |
 | `addIssueComment` | `POST …/issues/{issue_number}/comments` | Record the resolution note |
 | `updateIssue` | `PATCH …/issues/{issue_number}` | Close or reopen the issue |
 
@@ -48,7 +48,7 @@ The OpenAPI spec in `appPackage/apiSpecificationFile/github-issues.yaml` is a de
 
 Reads are unrestricted. Before any write the agent shows a complete preview and then invokes the write function so Microsoft 365 presents its native confirmation card; it adds no second conversational prompt. Closing an issue whose ticket is not `Resolved` or `Closed` requires the user to explicitly acknowledge the mismatch. Bulk closes are confirmed one issue at a time.
 
-The agent derives only `issue_number`, from the trailing segment of each ticket's indexed `link`. It never infers an issue number from the ticket ID — `TKT-2026-005` is issue 16, not issue 5.
+The agent derives only `issue_number`, from the trailing segment of each ticket's indexed `link`, never from the ticket ID. In the current data the two coincide (`TKT-2026-005` → issue 5) because the issues were created in ticket order, but the instructions treat that as coincidence rather than a rule.
 
 ## Project layout
 
